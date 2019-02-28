@@ -28,7 +28,7 @@ import java.util.Properties;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Response;
 import org.apache.tomcat.jdbc.pool.PoolProperties;
-import org.opensilex.core.config.ApplicationCoreConfig;
+import org.opensilex.core.config.OpenSilexCoreConfig;
 import org.opensilex.core.config.MongoDBConfig;
 import org.opensilex.core.config.RDF4JConfig;
 import org.slf4j.Logger;
@@ -127,7 +127,7 @@ public class PropertiesFileManager {
     /**
      * Application core config
      */
-    private static ApplicationCoreConfig coreConfig;
+    private static OpenSilexCoreConfig coreConfig;
     
     /**
      * Application mongo configuration
@@ -151,7 +151,7 @@ public class PropertiesFileManager {
     public static void setOpensilexConfigs(
         PhisPostgreSQLConfig pgConfig,
         PhisServicesConfig phisConfig,
-        ApplicationCoreConfig coreConfig,
+        OpenSilexCoreConfig coreConfig,
         MongoDBConfig mongoConfig,
         RDF4JConfig rdf4jConfig
     ) {

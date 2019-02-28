@@ -45,18 +45,19 @@
                 };
             }
             
-            
             $(function () {
                 // add by Arnaud Charleroy to mask swagger search bar
                 var url = window.location.search.match(/url=([^&]+)/);
+                var pathParts = window.location.pathname.split("/");
+                pathParts.pop();
+                pathParts.pop();
+                pathParts.shift();
+                var hostPath = window.location.protocol + "//" + window.location.host + "/";
+                var rootPath = hostPath + pathParts.join("/") + "/rest/";
                 if (url && url.length > 1) {
                     url = decodeURIComponent(url[1]);
                 } else {
-                    var pathParts = window.location.pathname.split("/");
-                    pathParts.pop();
-                    pathParts.pop();
-                    pathParts.shift();
-                    url = window.location.protocol + "//" + window.location.host + "/" + pathParts.join("/") + "/rest/swagger.json";
+                    url = rootPath + "swagger.json";
                 }
 
                 //SILEX:warning
@@ -131,6 +132,13 @@
                     dom_id: "swagger-ui-container",
                     supportedSubmitMethods: ['get', 'post', 'put', 'delete', 'patch'],
                     onComplete: function (swaggerApi, swaggerUi) {
+                        // Replace footer uri note 
+                        $(".footer h4").contents().filter(function() {
+                            return this.nodeType == 3;
+                        }).get(1).replaceWith(
+                            document.createTextNode( ": " + rootPath + ", " )
+                        );
+
                         if (typeof initOAuth == "function") {
                             initOAuth({
                                 clientId: "your-client-id",
@@ -158,6 +166,14 @@
                     jsonEditor: false,
                     defaultModelRendering: 'schema',
                     showRequestHeaders: false,
+                    showMutatedRequest: true,
+                    requestInterceptor: function() {
+                        if (!this.url.endsWith("swagger.json")) {
+                            var baseUrl = this.url;
+                            this.url = baseUrl.replace(hostPath, rootPath);
+                        }
+                        return this; 
+                    }, 
                     responseInterceptor: function(response) {
                         // Check if response match BrAPI token
                         if (response && response.url && response.body && response.url.endsWith("/brapi/v1/token")) {
