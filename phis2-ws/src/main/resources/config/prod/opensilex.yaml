@@ -19,8 +19,6 @@ phis-ws-service:
     uploadImageServerDirectory: <TO DEFINE>
     imageFileServerDirectory: <TO DEFINE>
     
-    webAppApiDocsName: <TO DEFINE>
-    
     gnpisPublicKeyFileName: GnpIS-JWT-public-key
     phisPublicKeyFileName: Phis-JWT-public-key
 

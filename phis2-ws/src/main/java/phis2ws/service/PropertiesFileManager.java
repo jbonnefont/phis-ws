@@ -240,9 +240,6 @@ public class PropertiesFileManager {
             case "imageFileServerDirectory":
                 value = phisConfig.imageFileServerDirectory();
                 break;     
-            case "webAppApiDocsName":
-                value = phisConfig.webAppApiDocsName();
-                break;
             case "gnpisPublicKeyFileName":
                 value = phisConfig.gnpisPublicKeyFileName();
                 break;   

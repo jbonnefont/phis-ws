@@ -29,8 +29,6 @@ public interface PhisServicesConfig {
     String uploadImageServerDirectory();
     String imageFileServerDirectory();
     
-    String webAppApiDocsName();
-    
     String gnpisPublicKeyFileName();
     String phisPublicKeyFileName();
     

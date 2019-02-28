@@ -244,7 +244,6 @@ public class DocumentResourceService extends ResourceService {
         //SILEX:conception
         // Add a class to group constants for properties
         //\SILEX:conception
-        final String webAppApiDocsName = PropertiesFileManager.getConfigFileProperty("service", "webAppApiDocsName");
         try {
             WAITING_ANNOT_FILE_CHECK.put(docUri, Boolean.TRUE); // Processing file
             LOGGER.debug(jsch.getSFTPWorkingDirectory() + "/" + media);
@@ -252,17 +251,17 @@ public class DocumentResourceService extends ResourceService {
             File documentDirectory = new File(jsch.getSFTPWorkingDirectory());
             if (!documentDirectory.isDirectory()) {
                 if (!documentDirectory.mkdirs()) {
-                    LOGGER.error("Can't create " + webAppApiDocsName + " temporary documents directory");
+                    LOGGER.error("Can't create " + documentDirectory.getPath() + " temporary documents directory");
                     throw new WebApplicationException(
                             Response.status(Response.Status.INTERNAL_SERVER_ERROR)
-                            .entity(new ResponseFormPOST(new Status("Can't create " + webAppApiDocsName + " temporary documents directory", StatusCodeMsg.ERR, null))).build());
+                            .entity(new ResponseFormPOST(new Status("Can't create " + documentDirectory.getPath() + " temporary documents directory", StatusCodeMsg.ERR, null))).build());
                 }else{
                     // Add good rights on the document directory which is on the server
                     try {
                         Runtime.getRuntime().exec("chmod -R 755 " + jsch.getSFTPWorkingDirectory());
-                        LOGGER.info( webAppApiDocsName + " temporary documents directory rights successfully updated");
+                        LOGGER.info( documentDirectory.getPath() + " temporary documents directory rights successfully updated");
                     } catch (IOException e) {
-                        LOGGER.error("Can't change rights on " + webAppApiDocsName + " temporary documents directory");
+                        LOGGER.error("Can't change rights on " + documentDirectory.getPath() + " temporary documents directory");
                     }
                 }
             }
