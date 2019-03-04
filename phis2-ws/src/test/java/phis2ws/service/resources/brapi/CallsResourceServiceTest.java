@@ -10,12 +10,12 @@ package phis2ws.service.resources.brapi;
 import javax.ws.rs.core.Response;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
-import org.opensilex.core.OpensilexTest;
+import org.opensilex.core.OpenSilexTest;
 
 /**
  * Tests for the BrAPI Call service
  */
-public class CallsResourceServiceTest extends OpensilexTest {
+public class CallsResourceServiceTest extends OpenSilexTest {
 
     /**
      * Test if the returned code is 200 when the call is correct
