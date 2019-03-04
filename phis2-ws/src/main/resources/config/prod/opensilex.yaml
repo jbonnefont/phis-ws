@@ -7,7 +7,7 @@ phis-ws-service:
     sessionTime: 12000
     waitingFileTime: 50000
     
-    uploadFileServerIP: localhost
+    uploadFileServerIP: <TO DEFINE>
     
     uploadFileServerUsername: <TO DEFINE>
     uploadFileServerPassword: <TO DEFINE>
