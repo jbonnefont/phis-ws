@@ -37,4 +37,6 @@ public interface PhisServicesConfig {
     String dataCollection();
     String imagesCollection();
 
+    String pageSizeMax();
+
 }

@@ -26,6 +26,8 @@ phis-ws-service:
     provenanceCollection: provenance
     dataCollection: rawData
     imagesCollection: images
+    
+    pageSizeMax: 2097152
 
 phis-ws-pg:
     host: localhost

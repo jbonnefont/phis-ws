@@ -246,6 +246,9 @@ public class PropertiesFileManager {
             case "phisPublicKeyFileName":
                 value = phisConfig.phisPublicKeyFileName();
                 break;   
+            case "pageSizeMax":
+                value = phisConfig.pageSizeMax();
+                break;   
             default:
                 break;
         }
